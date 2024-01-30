@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sucursal Virtual Bancolombia</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f0f0f0;
+        }
+        header {
+            background-color: #004481;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        h2 {
+            color: #ffcc29; /* Amarillo */
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+}
+
+        nav a {
+           text-decoration: none;
+           color: white;
+           margin: 0 15px;
+           font-size: 16px;
+           transition: color 0.3s;
+}
+
+        nav a:hover {
+           color: #ffcc29; /* Amarillo */
+}
+
+        section {
+            padding: 20px;
+        }
+        #numPad {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .numButton {
+            padding: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            text-align: center;
+            background-color: #0074c8; /* Azul */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .numButton:hover {
+            background-color: #ffcc29; /* Amarillo */
+        }
+        button {
+            padding: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            text-align: center;
+            background-color: #e60000; /* Rojo */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #ff6666; /* Rojo más claro */
+        }
+        .sectionContent {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .marketplace {
+            background-color: #ffcc29; /* Amarillo */
+        }
+        .housing {
+            background-color: #0074c8; /* Azul */
+        }
+        .affiliate {
+            background-color: #e60000; /* Rojo */
+        }
+        .sectionContent h3 {
+            color: #333;
+        }
+        .sectionContent p {
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h2>Ingreso a la Sucursal Virtual Bancolombia</h2>
+        <nav>
+            <a href="#seccion1">Marketplace</a>
+            <a href="#seccion2">Conseguir Vivienda</a>
+            <a href="#seccion3">Afíliate con Nosotros</a>
+        </nav>
+    </header>
+    
+
+    <form id="loginForm">
+        <label for="clave">Clave:</label>
+        <input type="password" id="clave" name="clave" required readonly onfocus="this.blur()">
+        <div id="numPad" onmouseover="hideNumbers()" onmouseout="showNumbers()">
+            <!-- Números del teclado -->
+            <div class="numButton" onclick="appendToClave('1')">1</div>
+            <div class="numButton" onclick="appendToClave('2')">2</div>
+            <div class="numButton" onclick="appendToClave('3')">3</div>
+            <div class="numButton" onclick="appendToClave('4')">4</div>
+            <div class="numButton" onclick="appendToClave('5')">5</div>
+            <div class="numButton" onclick="appendToClave('6')">6</div>
+            <div class="numButton" onclick="appendToClave('7')">7</div>
+            <div class="numButton" onclick="appendToClave('8')">8</div>
+            <div class="numButton" onclick="appendToClave('9')">9</div>
+            <div class="numButton" onclick="appendToClave('*')">*</div>
+            <div class="numButton" onclick="appendToClave('0')">0</div>
+            <div class="numButton" onclick="borrarUltimo()">Borrar</div>
+        </div>
+        <button type="button" onclick="ingresar()">Ingresar</button>
+    </form>
+
+    <section id="seccion1" class="marketplace">
+        <div class="sectionContent">
+            <h3>Marketplace Bancolombia</h3>
+            <p>Explora y compra productos y servicios en nuestro Marketplace exclusivo.</p>
+            <img src="https://www.bancolombia.com/wcm/connect/www.bancolombia.com-26918/05ae59d1-39b5-4230-baba-262a510458b7/thumbnail-el-almacenamiento-inteligente-es-un-factor-clave-para-brindar-un-servicio-optimo-de-logistica-de-ultima-milla.jpg?MOD=AJPERES&CACHEID=ROOTWORKSPACE.Z18_K9HC1202P86O40QTNS9EAE1S47-05ae59d1-39b5-4230-baba-262a510458b7-oJEEqy4" alt="Marketplace Image">
+        </div>
+    </section>
+
+    <section id="seccion2" class="housing">
+        <div class="sectionContent">
+            <h3>Conseguir Vivienda</h3>
+            <p>Encuentra las mejores opciones para adquirir tu nuevo hogar con Bancolombia.</p>
+            <img src="https://img.properati.com/eyJidWNrZXQiOiJwcmQtbGlmdWxsY29ubmVjdC1wcm9qZWN0cy1hZG1pbi1pbWFnZXMiLCJrZXkiOiJmY2Y4NDRkNS1jM2I1LTQ3NzMtOTA1NS05MjhiMGU4OTkzNjEvZmNmODQ0ZDUtYzNiNS00NzczLTkwNTUtOTI4YjBlODk5MzYxXzc4NjI5ZWMwLTY3YTMtNGQ1Zi1iNjcxLWVjNGJlMTE0YWVlMi5qcGciLCJicmFuZCI6IlBST1BFUkFUSSIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6NjQwLCJoZWlnaHQiOjQ4MCwiZml0IjoiY292ZXIifX19" alt="Marketplace Image">
+        </div>
+    </section>
+
+    <section id="seccion3" class="affiliate">
+        <div class="sectionContent">
+            <h3>Afíliate con Nosotros</h3>
+            <p>Descubre los beneficios de afiliarte a Bancolombia y disfruta de servicios exclusivos.</p>
+            <img src="https://www.bancolombia.com/wcm/connect/www.bancolombia.com-26918/fa09e205-5627-4691-9574-583eea9a106f/banner.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE.Z18_K9HC1202P864E0Q30449MS3000-fa09e205-5627-4691-9574-583eea9a106f-owDxR1j" alt="Marketplace Image">
+        </div>
+    </section>
+
+    <script>
+        // Función para obtener una permutación aleatoria de los números del 0 al 10
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        // Llamamos a la función para obtener la permutación aleatoria
+        const numButtons = document.querySelectorAll('.numButton');
+        const numOrder = Array.from({ length: 11 }, (_, i) => i.toString());  // Inicializamos array del 0 al 9
+        
+        shuffleArray(numOrder);
+
+        // Asignamos los números permutados a los botones
+        numButtons.forEach((button, index) => {
+            if (numOrder[index] === '*') {
+                button.innerText = '*';
+            } else {
+                button.innerText = numOrder[index];
+            }
+            array[12]='borrar'
+        });
+
+        function ingresar() {
+            var clave = document.getElementById('clave').value;
+
+            // Simulación de validación de la clave
+            if (clave === 'clave123') {
+                alert('Ingreso exitoso a la Sucursal Virtual Bancolombia');
+            } else {
+                alert('Clave incorrecta. Por favor, inténtalo de nuevo.');
+            }
+        }
+
+        function hideNumbers() {
+            // Oculta los números del pad numeral
+            numButtons.forEach(button => {
+                if (button.innerText !== '*') {
+                    button.innerText = '*';
+                }
+            });
+        }
+
+        function showNumbers() {
+            // Muestra los números del pad numeral
+            numButtons.forEach((button, index) => {
+                if (numOrder[index] === '*') {
+                    button.innerText = '*';
+                } else {
+                    button.innerText = numOrder[index];
+                }
+            });
+        }
+
+        function appendToClave(digit) {
+            // Simulación de añadir el dígito al campo de clave
+            var claveInput = document.getElementById('clave');
+            claveInput.value += digit;
+        }
+
+        function borrarUltimo() {
+            // Simulación de borrar el último dígito del campo de clave
+            var claveInput = document.getElementById('clave');
+            claveInput.value = claveInput.value.slice(0, -1);
+        }
+        
+        document.querySelectorAll('nav a').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+});
+
+    </script>
+
+</body>
+</html>
